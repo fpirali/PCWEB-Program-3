@@ -2,41 +2,50 @@
 session_start();
 if (empty($_SESSION['justice_regist'])) $_SESSION['justice_regist'] = array();
 
+require('../model/database_oo.php');
 require('../model/database.php');
 require('../model/training_db.php');
+require('../model/training.php');
 
-if (isset($_POST['action'])) {
-    $action = $_POST['action'];
-} else if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-} else {
-    $action = 'list_trainings';
+$action = filter_input(INPUT_POST, 'action');
+if ($action === NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action === NULL) {
+        $action = 'list_trainings';
+    }
 }
 
-if ($action == 'list_trainings') {
-
-    $trainings = get_trainings();
-
+switch($action) {
+    
+case 'list_trainings':
+    $trainings = TrainingDB::getTrainings();
     include('training_list.php');
-} else if ($action == 'delete_training') {
-    $training_code = $_POST['training_code'];
-    delete_training($training_code);
+    break;
+case 'delete_training':
+    $trainingCode = $_POST['trainingCode'];
+    TrainingDB::deleteTraining($trainingCode);
     header("Location: .");
-} else if ($action == 'show_add_form') {
-    include('training_add.php');
-} else if ($action == 'add_training') {
-    $training_code = $_POST['trainingCode'];
-    $name = $_POST['trainingName'];
-    $location = $_POST['location'];
-   
+    break;
+case 'show_add_form':
+		include('training_add.php');
+		break;
+ 
+case 'add_training':
+    
+     $trainingName = filter_input(INPUT_POST, 'trainingName');
+     $trainingLocation = filter_input(INPUT_POST, 'trainingLocation');
+     $trainingDate = filter_input(INPUT_POST, 'trainingDate');
+     $trainingTime = filter_input(INPUT_POST, 'trainingTime');
 
     // Validate the inputs
-    if (empty($training_code) || empty($name) || empty($location) ) {
+    if ( empty($trainingName) || empty($trainingLocation) || empty($trainingDate) || empty($trainingTime)) {
         $error = "Invalid training data. Check all fields and try again.";
         include('../errors/error.php');
     } else {
-        add_training($training_code, $name, $location);
+        $t = new Training( $trainingName, $trainingLocation, $trainingDate, $trainingTime);
+        TrainingDB::addTraining($t);
         header("Location: .");
     }
+
 }
 ?>

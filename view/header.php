@@ -24,9 +24,9 @@ $basedir = array_pop($basedir);
 <header>
     <h1>Justice Training Registration</h1>
     <p>View and register for justice live training</p>
-<!--    <nav>
+    <nav>
         <ul>
             <li><a href="/<?php echo htmlspecialchars($basedir) ?>">Home</a></li>
         </ul>
-    </nav>-->
+    </nav>
 </header>

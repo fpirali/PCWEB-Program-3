@@ -1,25 +1,47 @@
 <?php
-function get_trainings() {
-	global $db;
+class TrainingDB {
+    public static function getTrainings() {
+	$db = Database::getDB();
 	$query = 'SELECT * FROM trainings
-			  ORDER BY trainingCode';
-	$trainings = $db->query($query);
-	return $trainings;
+			  ORDER BY trainingName';
+	$statement = $db->prepare($query);
+        $statement->execute();
+        $rows = $statement->fetchAll();
+        $statement->closeCursor();
+        
+         $trainings = array();
+        foreach($rows as $row) {
+            $t = new Training(
+                    $row['trainingName'],
+                    $row['trainingLocation'], $row['trainingDate'], $row['trainingTime']);
+            $t->setTrainingCode($row['trainingCode']);
+            $trainings[] = $t;
+        }
+        return $trainings;
 }
 
-function delete_training($training_code) {
-	global $db;
+ public static function deleteTraining($trainingCode) {
+	$db = Database::getDB();
 	$query = "DELETE FROM trainings
-			  WHERE trainingCode = '$training_code'";
+			  WHERE trainingCode = '$trainingCode'";
 	$db->exec($query);
 }
 
-function add_training($training_code, $name, $location) {
-	global $db;
-	$query = "INSERT INTO trainings
-			  (trainingCode, trainingName, location)
-			  VALUES
-			  ('$training_code', '$name', '$location')";
-	$db->exec($query);
+public static function addTraining($t) {
+	$db = Database::getDB();
+       
+        $query = 'INSERT INTO trainings 
+                     (trainingName, trainingLocation, trainingDate, trainingTime)
+                  VALUES
+                     (:trainingName, :trainingLocation, :trainingDate, :trainingTime)';
+        $statement = $db->prepare($query);
+ 
+        $statement->bindValue(':trainingName', $t->getTrainingName());
+        $statement->bindValue(':trainingLocation', $t->getTrainingLocation());
+        $statement->bindValue(':trainingDate', $t->getTrainingDate());
+        $statement->bindValue(':trainingTime', $t->getTrainingTime());
+        $statement->execute();
+        $statement->closeCursor();
+}
 }
 ?>

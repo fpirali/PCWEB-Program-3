@@ -5,18 +5,18 @@
 		<h2>Register Product</h2>  
 		<form action="." method="post">
   			<input type="hidden" name="action" value="registration" />
-  			<input type="hidden" name="employeeID" 
-  				   value="<?php echo $employee['employeeID']; ?>" />
+  			<input type="hidden" name="empID" 
+  				   value="<?php echo $employee['empID']; ?>" />
   			
-  			<label>Customer:</label>
+  			<label>Employee:</label>
   			<label><?php echo $employee['firstName']." ".$employee['lastName']; ?></label>
   			<br />
   		  
   			<label>Training:</label>
   		 	<select name="trainingCode">
-                <?php foreach ($training as $training) : ?>
+                <?php foreach ($trainings as $training) : ?>
                     <option value="<?php echo $training['trainingCode']; ?>">
-                        <?php echo $training['name']; ?>
+                        <?php echo $training['trainingName'] .' '. $training['trainingDate']; ?>
                     </option>
                 <?php endforeach; ?>
         	</select>

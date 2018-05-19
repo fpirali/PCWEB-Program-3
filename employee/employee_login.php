@@ -1,6 +1,4 @@
-<?php 
-	include '../view/header.php'; 
-?>
+<?php include '../view/header.php'; ?>
 <main>
 		<h2>Employee Login</h2>  
 		<form action="." method="post">

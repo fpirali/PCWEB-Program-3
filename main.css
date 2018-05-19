@@ -29,7 +29,7 @@ header ul {
 }
 
 main {
-    margin: .5em 0 2em;
+    margin: 0;
     padding: .5em 2em .25em;
 }
 footer {
@@ -127,6 +127,9 @@ textarea {
     color: red;
 }
 
+#aligned {
+    margin: .5em 0 2em;
+}
 #aligned label {
     float: left;
     width: 8em;

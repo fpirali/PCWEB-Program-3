@@ -19,8 +19,8 @@
         <input type="text" name="email" />
         <br />
 
-        <label>Phone:</label>
-        <input type="text" name="phone" />
+        <label>Position:</label>
+        <input type="text" name="position" />
         <br />
         
         <label>Password:</label>

@@ -6,18 +6,22 @@
     <form action="" method="post" >
         <input type="hidden" name="action" value="add_training" />
 
-        <label>Training Code:</label>
-        <input type="text" name="trainingCode" />
-        <br />
-
         <label>Training Name:</label>
         <input type="text" name="trainingName" />
         <br />
 
-        <label>Location:</label>
-        <input type="text" name="location" />
+        <label>Training Location:</label>
+        <input type="text" name="trainingLocation" />
         <br />
-
+        
+        <label>Training Date:</label>
+        <input type="text" name="trainingDate" />
+        <br />
+        
+        <label>Training Time:</label>
+        <input type="text" name="trainingTime" />
+        <br />
+        
         <label>&nbsp;</label>
         <input type="submit" value="Add Training" />
         <br />
