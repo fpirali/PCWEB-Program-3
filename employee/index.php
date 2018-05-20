@@ -9,6 +9,7 @@ require('../model/emp_db.php');
 require('../model/employee_db.php');
 require('../model/training_db.php');
 require('../model/registration_db.php');
+require('../model/training.php');
 
 if (isset($_POST['action'])) {
 	$action = $_POST['action'];
@@ -39,10 +40,17 @@ switch($action) {
 		}
 		break;
 	case 'show_registration':
+               $trainings = TrainingDB::getTrainings();
 		$employee = get_employee_by_email($_SESSION['justice_regist']['employee_email']);
 		//$trainings = TrainingDB::getTrainings();
 		include('registration.php');
 		break;
+        case 'select_training':
+                $employees = EmployeeDB::getEmployees();
+                $_SESSION['justice_regist']['empID'] = $_POST['trainingCode'];
+              //  $message = "This incident was added to our database.";
+                include('select_tech_for_incident.php');        
+                break;
 	case 'registration':
 		$empID = $_POST['empID'];
 		$trainingCode = $_POST['trainingCode'];

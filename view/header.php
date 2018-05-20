@@ -22,7 +22,8 @@ $basedir = array_pop($basedir);
 <!-- the body section -->
 <body>
 <header>
-    <h1>Justice Training Registration</h1>
+    <h1 id="title">Justice Training Registration</h1>
+    <img src="../image/jbe3.png" alt="Justice Training" width="100" height="100">
     <p>View and register for justice live training</p>
     <nav>
         <ul>

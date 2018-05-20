@@ -12,20 +12,33 @@
   			<label><?php echo $employee['firstName']." ".$employee['lastName']; ?></label>
   			<br />
   		  
-  			<label>Training:</label>
-  		 	<select name="trainingCode">
-                <?php foreach ($trainings as $training) : ?>
-                    <option value="<?php echo $training['trainingCode']; ?>">
-                        <?php echo $training['trainingName'] .' '. $training['trainingDate']; ?>
-                    </option>
-                <?php endforeach; ?>
-        	</select>
-      		<br />  	
-      
-      		<label></label>
-   		 	<input type="submit" value="Register" />
-   		 	<br />   
-		</form>
+
+                        <h2>Training List</h2>
+        <table>
+            <tr>
+                <th>Training Name</th>
+                <th>Training Location</th>
+                <th>Training Date</th>
+                <th>Training Time</th>
+                <th>&nbsp;</th>
+            </tr>
+            <?php foreach ($trainings as $training) : ?>
+            <tr>
+                
+                <td><?php echo htmlspecialchars($training->getTrainingName()) ?></td>
+                <td><?php echo htmlspecialchars($training->getTrainingLocation()); ?></td>
+                 <td><?php echo htmlspecialchars($training->getTrainingDate()); ?></td>
+                  <td><?php echo htmlspecialchars($training->getTrainingTime()); ?></td>               
+                <td><form action="." method="post">
+                    <input type="hidden" name="action"
+                           value="select_training" />
+                    <input type="hidden" name="trainingCode"
+                           value="<?php echo htmlspecialchars($training->getTrainingCode()); ?>" />
+                    <input type="submit" value="Select" />
+                </form></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
 		<?php include '../view/employee_login_status.php'?>
 </main>
 <?php include '../view/footer.php'; ?>
