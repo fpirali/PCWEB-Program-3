@@ -1,8 +1,6 @@
-<?php 
-	include '../view/header.php'; 
-?>
+<?php include '../view/header.php';?>
 
-<main>
+<main id='aligned'>
     <h1>Add Employee</h1>
     <form action="" method="post">
         <input type="hidden" name="action" value="add_employees" />

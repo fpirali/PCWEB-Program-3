@@ -1,7 +1,7 @@
 <?php 
 	include '../view/header.php'; 
 ?>
-<main>
+<main id='aligned'>
     <h1>Add Training</h1>
     <form action="" method="post" >
         <input type="hidden" name="action" value="add_training" />
@@ -15,11 +15,11 @@
         <br />
         
         <label>Training Date:</label>
-        <input type="text" name="trainingDate" />
+        <input type="text" name="trainingDate" /><label>&nbsp;yyyy-mm-dd</label>
         <br />
         
         <label>Training Time:</label>
-        <input type="text" name="trainingTime" />
+        <input type="text" name="trainingTime" /><label>&nbsp;HH:MM AM/PM</label>
         <br />
         
         <label>&nbsp;</label>
