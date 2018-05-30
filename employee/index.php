@@ -6,10 +6,12 @@ if (empty($_SESSION['justice_regist'])) $_SESSION['justice_regist'] = array();
 require('../model/database_oo.php');
 require('../model/database.php');
 require('../model/emp_db.php');
+require('../model/employee.php');
 require('../model/employee_db.php');
 require('../model/training_db.php');
 require('../model/registration_db.php');
 require('../model/training.php');
+require('../model/registration.php');
 
 if (isset($_POST['action'])) {
 	$action = $_POST['action'];
@@ -39,29 +41,56 @@ switch($action) {
 			include('employee_login.php');
 		}
 		break;
-	case 'show_registration':
-               $trainings = TrainingDB::getTrainings();
-		$employee = get_employee_by_email($_SESSION['justice_regist']['employee_email']);
-		//$trainings = TrainingDB::getTrainings();
-		include('registration.php');
-		break;
-        case 'select_training':
-                $employees = EmployeeDB::getEmployees();
-                $_SESSION['justice_regist']['empID'] = $_POST['trainingCode'];
-              //  $message = "This incident was added to our database.";
-                include('select_tech_for_incident.php');        
-                break;
-	case 'registration':
-		$empID = $_POST['empID'];
-		$trainingCode = $_POST['trainingCode'];
-		$date = date('Y-m-d');
-		add_registration($empID, $trainingCode, $trainingName, $firstName, $lastName, $date);
-		include('registration_confirmation.php');
-		break;
-	case 'logout_employee':
-		unset($_SESSION['justice_regist']['employee_email']);
-		unset($_SESSION['justice_regist']['is_valid_employee']);
-		include('employee_login.php');
-		break;
+//	case 'show_registration':
+//               $trainings = TrainingDB::getTrainings();
+//		$employee = get_employee_by_email($_SESSION['justice_regist']['employee_email']);
+//		include('registration.php');
+//		break;
+//        case 'select_training':
+//                $employees = EmployeeDB::getEmployees();
+//                $_SESSION['justice_regist']['empID'] = $_POST['trainingCode']; 
+//                break;
+//	case 'registration':
+//             $employees = EmployeeDB::getEmployees();
+//            $trainings = TrainingDB::getTrainings();
+//		$empID = $_POST['empID'];
+//		$trainingCode = $_POST['trainingCode'];
+//		$date = date('Y-m-d');
+//		add_registration($empID, $trainingCode, $trainingName, $trainingDate, $trainingLocation, $firstName, $lastName, $date);
+//		include('registration_confirmation.php');
+//		break;
+        case 'show_registration':
+             $employees = EmployeeDB::getEmployees();
+        if (!isset($_SESSION['employee'])) {
+            $email = filter_input(INPUT_POST, 'email');
+            $employee = get_employee_by_email($email);
+            $_SESSION['employee'] = $employee;
+        }else{
+        $employee = $_SESSION['employee'];
+        $trainings = TrainingDB::getTrainings();
+        include('registration.php');
+        }
+        break;
+    case 'registration':
+        $employee = $_SESSION['employee'];
+//        $employee = filter_input(INPUT_POST, 'employeeCode');
+        $trainingCode = filter_input(INPUT_POST, 'trainingCode');
+        $trainingName = filter_input(INPUT_POST, 'trainingName');
+        $trainingDate = filter_input(INPUT_POST, 'trainingDate');
+        $trainingLocation = filter_input(INPUT_POST, 'trainingLocation');
+        $firstName = filter_input(INPUT_POST, 'firstName');
+        $lastName = filter_input(INPUT_POST, 'lastName');
+        $date = filter_input(INPUT_POST, 'date');
+
+        add_registration($employee['employeeCode'], $trainingCode, $trainingName, $trainingDate, $trainingLocation, $firstName, $lastName, $date);
+//        $message = "Training ($trainingCode) was registered successfully.";
+        include('registration_confirmation.php');
+        break;
+
+    case 'logout_employee':
+	unset($_SESSION['justice_regist']['employee_email']);
+	unset($_SESSION['justice_regist']['is_valid_employee']);
+	include('employee_login.php');
+	break;
 }
 ?>
