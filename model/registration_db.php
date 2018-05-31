@@ -43,11 +43,11 @@ function delete_registration($registrationCode) {
 
 function add_registration($empID, $trainingCode, $trainingName, $trainingDate, $trainingLocation, $firstName, $lastName, $date) {
     global $db;
+
     $date = date('Y-m-d'); 
     $query = 'INSERT INTO registrations (empID, trainingCode, trainingName, trainingDate, trainingLocation, firstName, lastName, date)
         VALUES
-            Select empID from employees
-            INNER JOIN trainings trainingCode, :trainingName, :trainingDate, :trainingLocation, :firstName, :lastName, :date)';
+            (:empID, :trainingCode, :trainingName, :trainingDate, :trainingLocation, :firstName, :lastName, :date)';
     $statement = $db->prepare($query);
     $statement->bindValue(':empID', $empID);
     $statement->bindValue(':trainingCode', $trainingCode);
@@ -57,7 +57,7 @@ function add_registration($empID, $trainingCode, $trainingName, $trainingDate, $
     $statement->bindValue(':firstName', $firstName);
     $statement->bindValue(':lastName', $lastName);
     $statement->bindValue(':date', $date);
-    $statement->execute();
+//    $statement->execute();
     $statement->closeCursor();
 }
 ?>

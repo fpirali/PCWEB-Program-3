@@ -1,6 +1,6 @@
 <?php
 
-class registration {
+class Registration {
       private $id, $date;
 
     public function __construct($date) {
