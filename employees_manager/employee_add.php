@@ -1,4 +1,5 @@
 <?php include '../view/header.php';?>
+<?php include '../view/admin_menu.php'?>
 
 <main id='aligned'>
     <h1>Add Employee</h1>
@@ -29,6 +30,9 @@
         <input type="submit" value="Add Employee" />
         <br />
     </form>
+     <br><br><?php if(!empty($error_message)) { ?>
+            <h2 class="error"><?php echo ($error_message); ?></h2>
+            <?php } ?> <br>
     <p><a href="?action=list_employees">View Employee List</a></p>
 </main>
 

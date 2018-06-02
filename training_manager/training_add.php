@@ -1,7 +1,6 @@
-<?php 
-	include '../view/header.php'; 
-?>
-<main id='aligned'>
+<?php include '../view/header.php'; ?>
+<?php include '../view/admin_menu.php'?>
+<main >
     <h1>Add Training</h1>
     <form action="" method="post" >
         <input type="hidden" name="action" value="add_training" />
@@ -26,6 +25,9 @@
         <input type="submit" value="Add Training" />
         <br />
     </form>
+    <br><br><?php if(!empty($error_message)) { ?>
+            <h2 class="error"><?php echo ($error_message); ?></h2>
+            <?php } ?> <br>
     <p><a href="?action=list_trainings">View Training List</a></p>
 </main>
 <?php include '../view/footer.php'; ?>

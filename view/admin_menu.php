@@ -1,17 +1,16 @@
-<?php
-    include '../view/header.php';
-?>
 
-<main>
-    <h2>Admin Menu</h2>
-    <ul>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+       <ul>
   
         <li><a href="../employees_manager">Manage Employees</a></li>
         <li><a href="../training_manager">Manage Training</a></li>
         <li><a href="../registration_manager">Manage Registration</a></li>
 
-    </ul>
-    <br><br>
-	<?php include '../view/admin_login_status.php'?>
-</main>
-<?php include '../view/footer.php'; ?>
+        </ul>
+    </body>
+</html>

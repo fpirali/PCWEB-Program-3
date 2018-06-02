@@ -14,8 +14,7 @@
             <label>Employee:</label>
             <?php foreach ($employees as $employee) : ?>
             <label><?php echo htmlspecialchars($employee->getFullName()); ?></label>
-                   
-            <br>
+
             <?php endforeach; ?>
             <label>Training:</label>
 <table>
@@ -36,6 +35,7 @@
                 <td><form action="." method="post">
                     <input type="hidden" name="action"
                            value="registration" />
+                   
                     <input type="hidden" name="trainingCode"
                            value="<?php echo htmlspecialchars($training->getTrainingCode()); ?>" />
                     <input type="submit" value="Select" />

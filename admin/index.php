@@ -29,6 +29,7 @@ switch($action) {
 			include('admin_menu.php');
 		} else {
 			include('admin_login_form.php');
+                        $error_message = 'Invalid username or password';
 		}
 		break;
 	case 'show_admin_menu':

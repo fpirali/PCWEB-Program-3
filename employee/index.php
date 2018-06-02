@@ -30,6 +30,7 @@ switch($action) {
 		if (isset($_POST['email']) AND isset($_POST['password'])) {
 			$username = $_POST['email'];
 			$password = $_POST['password'];
+                        
 		}
 		if (is_valid_employee_login($username, $password)) {
 			$_SESSION['justice_regist']['is_valid_employee'] = true;

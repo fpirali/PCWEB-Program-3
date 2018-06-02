@@ -1,4 +1,5 @@
 <?php include '../view/header.php'; ?>
+<?php include '../view/admin_menu.php'?>
 <main>
 
     <h1>Employee List</h1>
