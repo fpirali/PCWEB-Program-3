@@ -1,8 +1,10 @@
-<?php
-	include '../view/header.php'; 
-?>
-<div id="main">
+<?php include '../view/header.php'; ?>
+
+<main>
     <h2>Registration Confirmation</h2>
     <p>  You registered successfully for this training <?php echo $trainingName; ?>.</p>
-</div>
+</main>
+<p><a href="?action=registration">Training List</a></p>
+<br><br>
+<?php include '../view/employee_login_status.php'?>
 <?php include '../view/footer.php'; ?>

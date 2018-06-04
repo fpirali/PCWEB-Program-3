@@ -4,7 +4,7 @@
 
     <h1>Employee List</h1>
 
-    <table>
+    <table id="table">
         <tr>
             <th>Training Name</th>
             <th>Training Date</th>
@@ -32,6 +32,7 @@
         </tr>
         <?php endforeach; ?>
     </table>
-
+<br><br>
+<?php include '../view/admin_login_status.php'?>
 </main>
 <?php include '../view/footer.php'; ?>

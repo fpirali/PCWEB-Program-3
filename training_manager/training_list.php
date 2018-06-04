@@ -3,7 +3,7 @@
 <main>
 
         <h2>Training List</h2>
-        <table>
+        <table id="table">
             <tr>
                 <th>Training Name</th>
                 <th>Training Location</th>
@@ -29,5 +29,8 @@
             <?php endforeach; ?>
         </table>
         <p><a href="?action=show_add_form">Add Training</a></p>
+        <br><br>
+	<?php include '../view/admin_login_status.php'?>
+        
 </main>
 <?php include '../view/footer.php'; ?>

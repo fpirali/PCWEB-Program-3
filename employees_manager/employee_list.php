@@ -4,7 +4,7 @@
 
     <h1>Employee List</h1>
 
-    <table>
+    <table id="table">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
@@ -31,6 +31,7 @@
         <?php endforeach; ?>
     </table>
     <p><a href="?action=show_add_form">Add Employee</a></p>
-
+    <br><br>
+	<?php include '../view/admin_login_status.php'?>
 </main>
 <?php include '../view/footer.php'; ?>

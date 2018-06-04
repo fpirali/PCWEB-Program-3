@@ -5,13 +5,20 @@ if (empty($_SESSION['justice_regist'])) $_SESSION['justice_regist'] = array();
 require('../model/database.php');
 require('../model/admin_db.php');
 
-if (isset($_POST['action'])) {
-	$action = $_POST['action'];
-} else if (isset($_GET['action'])) {
-	$action = $_GET['action'];
-} else {
-	$action = 'show_admin_menu';
+$action = filter_input(INPUT_POST, 'action');
+if ($action === NULL) {
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action === NULL) {
+        $action = 'show_admin_menu';
+    }
 }
+//if (isset($_POST['action'])) {
+//	$action = $_POST['action'];
+//} else if (isset($_GET['action'])) {
+//	$action = $_GET['action'];
+//} else {
+//	$action = 'show_admin_menu';
+//}
 
 if (!isset($_SESSION['justice_regist']['is_valid_admin'])) {
 	$action = 'login_administrator';

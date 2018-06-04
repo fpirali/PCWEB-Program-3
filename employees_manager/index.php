@@ -58,9 +58,10 @@ switch($action) {
                     $error_message = '';
                     $password = password_hash($password, PASSWORD_DEFAULT, $options);
                     $e = new Employee($first_name, $last_name, $email, $position, $password);
+                    EmployeeDB::addEmployee($e);
                     $_SESSION['email'] = $email;
                     
-                    EmployeeDB::addEmployee($e);
+                    
                     header("Location: .");
                     include('employee_list.php');
                     exit();

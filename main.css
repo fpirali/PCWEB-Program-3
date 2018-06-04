@@ -177,31 +177,52 @@ textarea {
     color: red;
 }
 
-#aligned {
+/*#aligned {
     margin: .5em 0 2em;
-}
-#aligned label {
+}*/
+label {
+    width: 10em;
     float: left;
-    width: 8em;
-    margin-top: .25em;
-    margin-right: 1em;
+    padding-right: 1em;
+    padding-bottom: .5em;
+}
+input {
+    float: left;
     margin-bottom: .5em;
 }
-#aligned input {
-    float: left;
-    margin-bottom: .5em;
-}
-#aligned input[text] {
+input[text] {
     width: 15em;
 }
-#aligned .message {
+.message {
     margin-left: .5em;
     width: 15em;
 }
 #left{
     float: left;
 }
-#right{
+#logout{
     float: right;
     
+}
+#table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }

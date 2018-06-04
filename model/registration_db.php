@@ -57,7 +57,7 @@ function add_registration($empID, $trainingCode, $trainingName, $trainingDate, $
     $statement->bindValue(':firstName', $firstName);
     $statement->bindValue(':lastName', $lastName);
     $statement->bindValue(':date', $date);
-    $statement->execute();
+ //   $statement->execute();
     $statement->closeCursor();
 }
 ?>

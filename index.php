@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <?php  include 'view/header.php'; ?>
 <main>
-    <h2>Login</h2>
+    <h2>Login</h2><br><br>
 
-    <ul>
-        <li><a href="admin">Admin Login</a></li>
-        <li><a href="employee">Employee Login</a></li>
-    </ul>
+ 
+    <h2><a href="admin">Admin Login</a></h2><br>
+    <h2><a href="employee">Employee Login</a></h2>
+ 
 </main>
 <?php include 'view/footer.php'; ?>
