@@ -139,7 +139,7 @@ switch($action) {
 	unset($_SESSION['justice_regist']['is_valid_employee']);
 	include('employee_login.php');
 	break;
-    case 'training_list':
-        include('registration.php');
+    case 'employee_profile':
+        include('employee_profile.php');
 }
 ?>

@@ -1,4 +1,4 @@
-<?phpinclude '../view/header.php';?>
+<?php include '../view/header.php';?>
 
 <main>
     <h2>Admin Menu</h2>

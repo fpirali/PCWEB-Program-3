@@ -1,25 +1,9 @@
 <?php include '../view/header.php'; ?>
+<?php include '../view/employee_menu.php'?>
 <main>
 
     <h2>Register for Training</h2>
-<table>
-        <tr>
-            <th>Name</th>        
-            <th>&nbsp;</th>
-        </tr>
-        <?php foreach ($employees as $employee) : ?>
-        <tr>
-            <td><?php echo htmlspecialchars($employee->getFullName()); ?></td>         
-            <td><form action="." method="post">
-                <input type="hidden" name="action"
-                      value="select_tech_for_incident" >
-                <input type="hidden" name="techID"
-                       value="<?php echo htmlspecialchars($employee->getID()); ?>">
-                <input type="submit" value="Select">
-            </form></td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
+    <p>Account: <?php echo $_SESSION['justice_regist']['employee_email'];?></p>
             <p>Training:</p>
 <table id="table">
             <tr>
