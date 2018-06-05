@@ -17,8 +17,5 @@
 	   		 <input type="submit" value="Login" />
    		  <br />   
 		</form>
-                <br><br><?php if(!empty($error_message)) { ?>
-            <h2 class="error"><?php echo ($error_message); ?></h2>
-            <?php } ?> <br>
 </main>
 <?php include '../view/footer.php'; ?>

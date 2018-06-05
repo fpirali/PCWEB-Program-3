@@ -29,10 +29,7 @@
         <label>&nbsp;</label>
         <input type="submit" value="Add Employee" />
         <br />
-    </form>
-     <br><br><?php if(!empty($error_message)) { ?>
-            <h2 class="error"><?php echo ($error_message); ?></h2>
-            <?php } ?> <br>
+    </form><br><br>
     <p><a href="?action=list_employees">View Employee List</a></p>
     <br><br>
 	<?php include '../view/admin_login_status.php'?>
