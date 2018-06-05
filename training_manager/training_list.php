@@ -27,7 +27,7 @@
                 </form></td>
             </tr>
             <?php endforeach; ?>
-        </table><br><br>
+        </table>
         <p><a href="?action=show_add_form">Add Training</a></p>
         <br><br>
 	<?php include '../view/admin_login_status.php'?>

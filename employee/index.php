@@ -30,6 +30,7 @@ switch($action) {
 		if (isset($_POST['email']) AND isset($_POST['password'])) {
 			$username = $_POST['email'];
 			$password = $_POST['password'];
+                        
 		}
 		if (is_valid_employee_login($username, $password)) {
 			$_SESSION['justice_regist']['is_valid_employee'] = true;
@@ -44,37 +45,40 @@ switch($action) {
 		break;
 	case 'employee_registeration':
                 $options = ['cost' => 11];
-		 $first_name = filter_input(INPUT_POST, 'first_name');
+		$first_name = filter_input(INPUT_POST, 'first_name');
                 $last_name = filter_input(INPUT_POST, 'last_name');
                 $position = filter_input(INPUT_POST, 'position');
                 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, 'password');
                 
-        if ($first_name === '') {
-            $error_message = 'You must enter First name';
-        } else if ($last_name === '') {
-            $error_message = 'You must enter Last name';
-        } else if ($position === '') {
-            $error_message = 'You must enter UserName';
-        } else if ($email === FALSE) {
-            $error_message = 'You must enter Email';
-        } else if ($password === '') {
-            $error_message = 'Must create a password';
-                } else {
-                   $error_message = '';
+                  if ($first_name === '') {
+                    $error_message = 'You must enter First name';
+                    } else if ($last_name === '') {
+                        $error_message = 'You must enter Last name';
+                    } else if ($position === '') {
+                        $error_message = 'You must enter Position';
+                    } else if ($email === '') {
+                        $error_message = 'You must enter Email';
+                    } else if ($email !== $_SESSION['email']){
+                        $resultEmail =  EmployeeDB::checkEmail($email);
+                        if ($resultEmail === "1") {
+                            $error_message = 'Email already in Use';
+                        }
+                     
+                } else {                  
+                    $error_message = '';
                     $password = password_hash($password, PASSWORD_DEFAULT, $options);
                     $e = new Employee($first_name, $last_name, $email, $position, $password);
-                    EmployeeDB::addEmployee($e);
                     $_SESSION['email'] = $email;
-                    
-                    
+                   
+                    EmployeeDB::addEmployee($e);
                     header("Location: .");
+                    include('registration.php');
+                    exit();
+                     die();
                 }
-            if ($error_message != '') {
-            include('employee_registration.php');
-            exit();
-            die();
-        }
+                include('employee_registration.php');
+              
                 break;
                         
 //	case 'show_registration':
@@ -129,9 +133,7 @@ switch($action) {
 ////        $message = "Training ($trainingCode) was registered successfully.";
 //        include('registration_confirmation.php');
 //        break;
-        case 'employee_profile':
-          include('employee_profile.php');
-            break;
+
     case 'logout_employee':
 	unset($_SESSION['justice_regist']['employee_email']);
 	unset($_SESSION['justice_regist']['is_valid_employee']);
@@ -139,6 +141,5 @@ switch($action) {
 	break;
     case 'training_list':
         include('registration.php');
-        break;
 }
 ?>

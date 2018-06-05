@@ -25,6 +25,10 @@
         <label>Password:</label>
         <input type="text" name="password" />
         <br />
+<!--        <label>Confirm Password:</label>
+        <input type="text" name="Conf_password" />
+        <br />-->
+
         <label>&nbsp;</label>
         <input type="submit" value="Register" />
         <br />

@@ -26,6 +26,5 @@ $basedir = array_pop($basedir);
    
     <img src="../image/jbe3.png" alt="Justice Training" width="100" height="100">
      <h2 id="title">Justice Training Registration</h2>
-<!--    <p>View and register for justice live training</p>-->
-
+  
 </header>

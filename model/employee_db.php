@@ -4,7 +4,7 @@ class EmployeeDB {
     public static function getEmployees() {
         $db = Database::getDB();
 
-        $query = 'SELECT * FROM employees
+        $query = 'SELECT *, "*******" AS password FROM employees
                   ORDER BY lastName';
         $statement = $db->prepare($query);
         $statement->execute();
@@ -49,6 +49,7 @@ class EmployeeDB {
         $statement->execute();
         $statement->closeCursor();
     }
+    
     public static function getEmployee($empID) {
 	global $db;
 	$query = 'SELECT * FROM employees
@@ -61,6 +62,18 @@ class EmployeeDB {
 		$statement->closeCursor();
 		return $result;
 	
+}
+    public static function checkEmail($email){
+        
+        $db = Database::getDB();
+        
+        $query = 'SELECT email FROM employees WHERE email =:email';
+         $statement = $db->prepare($query);
+         $statement->bindValue(':email', $email);
+        $statement->execute();
+        $results =  $statement->fetchAll();
+        $statement->closeCursor();
+        return $results;
 }
 
 }
