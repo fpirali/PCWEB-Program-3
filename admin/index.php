@@ -12,14 +12,6 @@ if ($action === NULL) {
         $action = 'show_admin_menu';
     }
 }
-//if (isset($_POST['action'])) {
-//	$action = $_POST['action'];
-//} else if (isset($_GET['action'])) {
-//	$action = $_GET['action'];
-//} else {
-//	$action = 'show_admin_menu';
-//}
-
 if (!isset($_SESSION['justice_regist']['is_valid_admin'])) {
 	$action = 'login_administrator';
 }
@@ -35,8 +27,8 @@ switch($action) {
 			$_SESSION['justice_regist']['admin_username'] = $username;
 			include('admin_menu.php');
 		} else {
-			include('admin_login_form.php');
-                        $error_message = 'Invalid username or password';
+                        $error_message = 'Invalid username or password! Try again';
+                        include('admin_login_form.php');
 		}
 		break;
 	case 'show_admin_menu':

@@ -43,5 +43,18 @@ public static function addTraining($t) {
         $statement->execute();
         $statement->closeCursor();
 }
+//public static function getTraining() {
+//	$db = Database::getDB();
+//	$query = 'SELECT * FROM trainings
+//		  WHERE trainingCode = :trainingCode';
+//	
+//		$statement = $db->prepare($query);
+//		$statement->bindValue(':trainingCode', $trainingCode);
+//		$statement->execute();
+//		$result = $statement->fetch();
+//		$statement->closeCursor();
+//		return $result;
+//	 
+//}
 }
 ?>

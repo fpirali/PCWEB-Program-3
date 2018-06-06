@@ -81,15 +81,6 @@ switch($action) {
               
                 break;
                         
-//	case 'show_registration':
-//               $trainings = TrainingDB::getTrainings();
-//		$employee = get_employee_by_email($_SESSION['justice_regist']['employee_email']);
-//		include('registration.php');
-//		break;
-//        case 'select_training':
-//                $employees = EmployeeDB::getEmployees();
-//                $_SESSION['justice_regist']['empID'] = $_POST['trainingCode']; 
-//                break;
 	case 'registration':
              $employees = EmployeeDB::getEmployees();
             $trainings = TrainingDB::getTrainings();
@@ -118,21 +109,6 @@ switch($action) {
         include('registration.php');
         }
         break;
-//    case 'registration':
-//        $employee = $_SESSION['employee'];
-//        $employee = filter_input(INPUT_POST, 'employeeCode');
-//        $trainingCode = filter_input(INPUT_POST, 'trainingCode');
-//        $trainingName = filter_input(INPUT_POST, 'trainingName');
-//        $trainingDate = filter_input(INPUT_POST, 'trainingDate');
-//        $trainingLocation = filter_input(INPUT_POST, 'trainingLocation');
-//        $firstName = filter_input(INPUT_POST, 'firstName');
-//        $lastName = filter_input(INPUT_POST, 'lastName');
-//        $date = filter_input(INPUT_POST, 'date');
-//
-//        add_registration($employee['employeeCode'], $trainingCode, $trainingName, $trainingDate, $trainingLocation, $firstName, $lastName, $date);
-////        $message = "Training ($trainingCode) was registered successfully.";
-//        include('registration_confirmation.php');
-//        break;
 
     case 'logout_employee':
 	unset($_SESSION['justice_regist']['employee_email']);
