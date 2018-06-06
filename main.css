@@ -82,6 +82,18 @@ p {
     padding: 0;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    margin: 0;
+    padding: 0;
+    display:block;
+    list-style:none;
+    padding:5px 10px 5px 15px;
+
+}
 nav ul {
     list-style-type: none;
     margin-left: 0;
@@ -103,29 +115,7 @@ a {
 a:hover {
     color: #3333CC;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
 
-li {
-    float: left;
-}
-
-li a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
-}
 table {
     border: 1px solid #001963;
     border-collapse: collapse;

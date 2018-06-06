@@ -16,10 +16,8 @@
 	   		 <input type="submit" value="Login" />
    		  <br />   
 		</form>
-            <br><br><?php if(!empty($error_message)) { ?>
+                 <br><br><?php if(!empty($error_message)) { ?>
             <h2 class="error"><?php echo ($error_message); ?></h2>
             <?php } ?> <br>
-            
-            <p><a href="../employee/employee_login.php">Switch to Employee Login</a></p>
 </main>
 <?php include '../view/footer.php'; ?>

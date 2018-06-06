@@ -10,7 +10,6 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Position</th>
-            <th>Password</th>
             <th>&nbsp;</th>
         </tr>
         <?php foreach ($employees as $employee) : ?>
@@ -19,7 +18,6 @@
             <td><?php echo htmlspecialchars($employee->getLastName()); ?></td>
             <td><?php echo htmlspecialchars($employee->getEmail()); ?></td>
             <td><?php echo htmlspecialchars($employee->getPosition()); ?></td>
-            <td><?php echo htmlspecialchars($employee->getPassword()); ?></td>
             <td><form action="." method="post">
                 <input type="hidden" name="action"
                        value="delete_employee">
@@ -29,7 +27,7 @@
             </form></td>
         </tr>
         <?php endforeach; ?>
-    </table>
+    </table><br><br>
     <p><a href="?action=show_add_form">Add Employee</a></p>
     <br><br>
 	<?php include '../view/admin_login_status.php'?>

@@ -37,26 +37,15 @@ case 'add_training':
      $trainingDate = filter_input(INPUT_POST, 'trainingDate');
      $trainingTime = filter_input(INPUT_POST, 'trainingTime');
 
-     
-        if ($trainingName === '') {
-        $error_message = 'You must enter training name';
-        } else if ($trainingLocation === '') {
-            $error_message = 'You must enter training location';
-        } else if ($trainingDate === '') {
-            $error_message = 'You must enter training date';
-        } else if ($trainingTime === '') {
-            $error_message = 'You must enter training time';
+    // Validate the inputs
+    if ( empty($trainingName) || empty($trainingLocation) || empty($trainingDate) || empty($trainingTime)) {
+        $error = "Invalid training data. Check all fields and try again.";
+        include('../errors/error.php');
     } else {
         $t = new Training( $trainingName, $trainingLocation, $trainingDate, $trainingTime);
         TrainingDB::addTraining($t);
-         header("Location: .");
-        include('training_list.php');
-        exit();
-        die();
-       
+        header("Location: .");
     }
-    include('training_add.php');
-    die();
 
 }
 ?>

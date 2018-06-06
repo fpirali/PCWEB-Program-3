@@ -9,5 +9,8 @@
     <br><br>
     <?php include '../view/employee_login_status.php'?>
 </main>
+<p><a href="?action=show_registration">Training List</a></p>
+<br><br>
+<?php include '../view/employee_login_status.php'?>
 
 <?php include '../view/footer.php'; ?>

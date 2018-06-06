@@ -33,29 +33,24 @@ switch($action) {
 		break;
 	case 'add_employees':
                 $options = ['cost' => 11];
-		$first_name = filter_input(INPUT_POST, 'first_name');
+		 $first_name = filter_input(INPUT_POST, 'first_name');
                 $last_name = filter_input(INPUT_POST, 'last_name');
                 $position = filter_input(INPUT_POST, 'position');
                 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, 'password');
                 
-                  if ($first_name === '') {
-                    $error_message = 'You must enter First name';
-                    } else if ($last_name === '') {
-                        $error_message = 'You must enter Last name';
-                    } else if ($position === '') {
-                        $error_message = 'You must enter Position';
-                    } else if ($email === '') {
-                        $error_message = 'You must enter Email';
-                    } else if ($email !== $_SESSION['email']){
-                        $resultEmail =  EmployeeDB::checkEmail($email);
-                        if ($resultEmail === "1") {
-                            $error_message = 'Email already in Use';
-                        }
-                     
+        if ($first_name === '') {
+            $error_message = 'You must enter First name';
+        } else if ($last_name === '') {
+            $error_message = 'You must enter Last name';
+        } else if ($position === '') {
+            $error_message = 'You must enter UserName';
+        } else if ($email === FALSE) {
+            $error_message = 'You must enter Email';
+        } else if ($password === '') {
+            $error_message = 'Must create a password';
                 } else {
-                   
-                    $error_message = '';
+                   $error_message = '';
                     $password = password_hash($password, PASSWORD_DEFAULT, $options);
                     $e = new Employee($first_name, $last_name, $email, $position, $password);
                     EmployeeDB::addEmployee($e);
@@ -63,12 +58,12 @@ switch($action) {
                     
                     
                     header("Location: .");
-                    include('employee_list.php');
-                    exit();
-                     die();
                 }
-                include('employee_add.php');
-               die();
+            if ($error_message != '') {
+            include('employee_add.php');
+            exit();
+            die();
+        }
                 break;
 }
 
